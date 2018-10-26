@@ -1,3 +1,5 @@
+<!-- make a seperate component for the searchbox and filter -->
+
 <!-- Title & Searchbox-->
 <header class="container default-padding">
   <div class="row">
@@ -7,6 +9,8 @@
         <div class="col-8 offset-2">
           <div class="form-group">
             <input
+              [ngModel]="query | async"
+              (keyup)="setQuery($event.target.value)"
               type="text"
               placeholder="Search"
               class="searchfield form-control text-center"
@@ -20,16 +24,32 @@
   <!-- Filters -->
   <div class="row">
     <div class="col-4 offset-2 dropdown">
-      <select class="form-control form-control-sm">
-        <option>Option 01</option>
-        <option>Option 02</option>
+      <select (change)="setGender($event.target.value)" [ngModel]="gender | async" class="form-control form-control-sm">
+        <option value=""></option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
       </select>
     </div>
     <div class="col-4 dropdown">
-      <select class="form-control form-control-sm">
-        <option>Option 01</option>
-        <option>Option 02</option>
-        <option>Option 03</option>
+      <select (change)="setNationality($event.target.value)" [ngModel]="nationality | async" class="form-control form-control-sm">
+        <option value=""></option>
+        <option>AU</option>
+        <option>BR</option>
+        <option>CA</option>
+        <option>CH</option>
+        <option>DE</option>
+        <option>DK</option>
+        <option>ES</option>
+        <option>FI</option>
+        <option>FR</option>
+        <option>GB</option>
+        <option>IE</option>
+        <option>IR</option>
+        <option>NO</option>
+        <option>NL</option>
+        <option>NZ</option>
+        <option>TR</option>
+        <option>US</option>
       </select>
     </div>
   </div>
@@ -44,8 +64,8 @@
     </div>
 
     <div class="article" *ngFor="let item of (data | async)">
-      <h4>Article Title ({{item}}) -- User.name.first User.name.last</h4>
-      <p>Article Description -- User.nat - User.gender</p>
+      <h4>Article Title ({{item.login.username}}) -- {{ item.name.first }} {{ item.name.last }}</h4>
+      <p>Article Description -- {{ item.nat }} - {{ item.gender }}</p>
     </div>
   </div>
 </main>

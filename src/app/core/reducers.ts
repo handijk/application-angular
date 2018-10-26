@@ -1,5 +1,6 @@
-import { AppActions } from './actions';
+import { AppActions } from "./actions";
 
+// TODO: add more explicit typing to the incoming data
 export interface AppState {
   loading?: boolean;
   data?: Array<any>;
@@ -9,7 +10,10 @@ const initialState: AppState = {
   loading: false
 };
 
-export const appReducers = (state: AppState = initialState, action: any): AppState => {
+export const appReducers = (
+  state: AppState = initialState,
+  action: any
+): AppState => {
   switch (action.type) {
     case AppActions.DATA_FETCH_SUCCESS: {
       return {

@@ -1,4 +1,6 @@
-const prefix = 'APP';
+const prefix = "APP";
+
+// TODO: add classes for actions to ensure type safety, same as filter actions
 
 export const AppActions = {
   LOADING_START: `${prefix}_LOADING_START`,

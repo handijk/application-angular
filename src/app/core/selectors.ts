@@ -1,6 +1,6 @@
-import { State } from './reducer-map';
-import { createSelector } from '@ngrx/store';
-import { AppState } from './reducers';
+import { State } from "./reducer-map";
+import { createSelector } from "@ngrx/store";
+import { AppState } from "./reducers";
 
 const getState = (state: State) => state.app;
 
@@ -9,5 +9,5 @@ const data = (state: AppState) => state.data;
 
 export const AppSelectors = {
   loading: createSelector(getState, loading),
-  data: createSelector(getState, data),
+  data: createSelector(getState, data)
 };
